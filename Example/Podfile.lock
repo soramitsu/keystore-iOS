@@ -1,0 +1,16 @@
+PODS:
+  - SoraKeystore (0.1.1)
+
+DEPENDENCIES:
+  - SoraKeystore (from `../`)
+
+EXTERNAL SOURCES:
+  SoraKeystore:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SoraKeystore: b9935387ac83b37b17d9212e545417b9012c0e12
+
+PODFILE CHECKSUM: 913717513569fbe55599b0a27483a968b463c0df
+
+COCOAPODS: 1.6.1
