@@ -1,5 +1,5 @@
 PODS:
-  - SoraKeystore (0.1.1)
+  - SoraKeystore (0.1.5)
 
 DEPENDENCIES:
   - SoraKeystore (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SoraKeystore: b9935387ac83b37b17d9212e545417b9012c0e12
+  SoraKeystore: 408a26aafda780fc3005b20ab336791832b5419e
 
 PODFILE CHECKSUM: 913717513569fbe55599b0a27483a968b463c0df
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.8.4
