@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SoraKeystore'
-  s.version          = '0.1.4'
+  s.version          = '0.1.5'
   s.summary          = 'A library to wrap logic related to keychain and user defaults.'
 
   s.homepage         = 'https://github.com/soramitsu'
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '9.0'
 
-  s.swift_version = '4.2'
+  s.swift_version = '5.0'
 
   s.source_files = 'SoraKeystore/Classes/**/*'
 
