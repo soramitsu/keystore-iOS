@@ -4,7 +4,6 @@
 */
 
 import Foundation
-import SoraKeystore
 
 public final class InMemorySettingsManager: SettingsManagerProtocol {
     private var settings: [String: Any] = [:]

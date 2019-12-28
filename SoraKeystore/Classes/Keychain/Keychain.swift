@@ -55,7 +55,7 @@ public class Keychain: KeystoreProtocol {
         let query: [String: Any] = [
             kSecClass as String: kSecClassKey,
             kSecAttrApplicationTag as String: applicationTag,
-            kSecReturnData as String: kCFBooleanTrue
+            kSecReturnData as String: kCFBooleanTrue as Any
         ]
 
         var item: CFTypeRef?
@@ -77,7 +77,7 @@ public class Keychain: KeystoreProtocol {
         let query: [String: Any] = [
             kSecClass as String: kSecClassKey,
             kSecAttrApplicationTag as String: applicationTag,
-            kSecReturnData as String: kCFBooleanFalse
+            kSecReturnData as String: kCFBooleanFalse as Any
         ]
 
         let status = SecItemCopyMatching(query as CFDictionary, nil)

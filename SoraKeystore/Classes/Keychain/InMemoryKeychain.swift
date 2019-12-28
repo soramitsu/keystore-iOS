@@ -4,7 +4,6 @@
 */
 
 import Foundation
-import SoraKeystore
 
 public final class InMemoryKeychain: KeystoreProtocol {
     private var keystore: [String: Data] = [:]
