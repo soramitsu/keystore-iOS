@@ -35,6 +35,11 @@ public class SettingsManager: SettingsManagerProtocol {
         UserDefaults.standard.synchronize()
     }
 
+    public func set(anyValue: Any, for key: String) {
+        UserDefaults.standard.setValue(anyValue, forKey: key)
+        UserDefaults.standard.synchronize()
+    }
+
     public func bool(for key: String) -> Bool? {
         guard UserDefaults.standard.object(forKey: key) != nil else {
             return nil
@@ -60,11 +65,15 @@ public class SettingsManager: SettingsManagerProtocol {
     }
 
     public func string(for key: String) -> String? {
-        return UserDefaults.standard.value(forKey: key) as? String
+        UserDefaults.standard.value(forKey: key) as? String
     }
 
     public func data(for key: String) -> Data? {
-        return UserDefaults.standard.value(forKey: key) as? Data
+        UserDefaults.standard.value(forKey: key) as? Data
+    }
+
+    public func anyValue(for key: String) -> Any? {
+        UserDefaults.standard.value(forKey: key)
     }
 
     public func removeValue(for key: String) {

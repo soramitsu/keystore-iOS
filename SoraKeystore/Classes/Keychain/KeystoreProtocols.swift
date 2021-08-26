@@ -12,7 +12,7 @@ public enum KeystoreError: Error {
     case unexpectedFail
 }
 
-public protocol KeystoreProtocol {
+public protocol KeystoreProtocol: AnyObject {
     func addKey(_ key: Data, with identifier: String) throws
     func updateKey(_ key: Data, with identifier: String) throws
     func fetchKey(for identifier: String) throws -> Data
@@ -67,7 +67,7 @@ extension Data: SecretDataRepresentable {
     }
 }
 
-public protocol SecretStoreManagerProtocol {
+public protocol SecretStoreManagerProtocol: AnyObject {
     func loadSecret(for identifier: String,
                     completionQueue: DispatchQueue,
                     completionBlock: @escaping (SecretDataRepresentable?) -> Void)

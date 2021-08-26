@@ -120,4 +120,20 @@ class SettingsManagerTests: XCTestCase {
 
         XCTAssertEqual(steve, fetchedPerson)
     }
+
+    func testInsertAnyValue() {
+        // given
+        let testData = "Test data".data(using: String.Encoding.utf8)!
+
+        // process
+        SettingsManager.shared.set(anyValue: testData, for: insertionKey)
+
+        let anyValue = SettingsManager.shared.anyValue(for: insertionKey)
+        XCTAssertEqual(testData, anyValue as? Data)
+
+        SettingsManager.shared.removeValue(for: insertionKey)
+
+        // expected
+        XCTAssertNil(SettingsManager.shared.anyValue(for: insertionKey))
+    }
 }
