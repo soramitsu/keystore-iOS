@@ -5,17 +5,19 @@
 
 import Foundation
 
-public protocol SettingsManagerProtocol {
+public protocol SettingsManagerProtocol: AnyObject {
     func set(value: Bool, for key: String)
     func set(value: Int, for key: String)
     func set(value: Double, for key: String)
     func set(value: String, for key: String)
     func set(value: Data, for key: String)
+    func set(anyValue: Any, for key: String)
     func bool(for key: String) -> Bool?
     func integer(for key: String) -> Int?
     func double(for key: String) -> Double?
     func string(for key: String) -> String?
     func data(for key: String) -> Data?
+    func anyValue(for key: String) -> Any?
     func removeValue(for key: String)
     func removeAll()
 }
