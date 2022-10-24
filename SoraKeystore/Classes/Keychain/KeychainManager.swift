@@ -6,21 +6,33 @@
 import Foundation
 
 public class KeychainManager {
-    public static let shared: KeychainManager = KeychainManager()
     fileprivate static let queueLabel = "keychain.concurrent"
-
-    fileprivate lazy var concurentQueue: DispatchQueue = DispatchQueue(label: KeychainManager.queueLabel,
-                                                                   qos: .default,
-                                                                   attributes: .concurrent)
+    
+    public static let shared: KeychainManager = KeychainManager(qos: .default)
+    
+    public static func shared(with qos: DispatchQoS) -> KeychainManager {
+        KeychainManager(qos: qos)
+    }
+    
     fileprivate lazy var keystore: Keychain = Keychain()
+    fileprivate let qos: DispatchQoS
+    fileprivate lazy var concurentQueue: DispatchQueue = DispatchQueue(
+        label: KeychainManager.queueLabel,
+        qos: qos,
+        attributes: .concurrent
+    )
 
-    private init() {}
+    private init(qos: DispatchQoS) {
+        self.qos = qos
+    }
 }
 
 extension KeychainManager: SecretStoreManagerProtocol {
-    public func loadSecret(for identifier: String,
-                           completionQueue: DispatchQueue,
-                           completionBlock: @escaping (SecretDataRepresentable?) -> Void) {
+    public func loadSecret(
+        for identifier: String,
+        completionQueue: DispatchQueue,
+        completionBlock: @escaping (SecretDataRepresentable?) -> Void
+    ) {
         concurentQueue.async {
             let data = try? self.keystore.fetchKey(for: identifier)
 
@@ -30,18 +42,17 @@ extension KeychainManager: SecretStoreManagerProtocol {
         }
     }
 
-    public func saveSecret(_ secret: SecretDataRepresentable,
-                           for identifier: String,
-                           completionQueue: DispatchQueue, completionBlock: @escaping (Bool) -> Void) {
+    public func saveSecret(
+        _ secret: SecretDataRepresentable,
+        for identifier: String,
+        completionQueue: DispatchQueue,
+        completionBlock: @escaping (Bool) -> Void
+    ) {
         concurentQueue.async {
-            guard let secretExists = try? self.keystore.checkKey(for: identifier) else {
-                completionQueue.async {
-                    completionBlock(false)
-                }
-                return
-            }
-
-            guard let secretData = secret.asSecretData() else {
+            guard
+                let secretExists = try? self.keystore.checkKey(for: identifier),
+                let secretData = secret.asSecretData()
+            else {
                 completionQueue.async {
                     completionBlock(false)
                 }
@@ -67,24 +78,29 @@ extension KeychainManager: SecretStoreManagerProtocol {
         }
     }
 
-    public func removeSecret(for identifier: String,
-                             completionQueue: DispatchQueue,
-                             completionBlock: @escaping (Bool) -> Void) {
+    public func removeSecret(
+        for identifier: String,
+        completionQueue: DispatchQueue,
+        completionBlock: @escaping (Bool) -> Void
+    ) {
         concurentQueue.async {
-            guard let secretExists = try? self.keystore.checkKey(for: identifier), secretExists else {
+            guard
+                let secretExists = try? self.keystore.checkKey(for: identifier),
+                secretExists
+            else {
                 completionQueue.async {
                     completionBlock(false)
                 }
                 return
             }
-
+            
             do {
                 try self.keystore.deleteKey(for: identifier)
-
+                
                 completionQueue.async {
                     completionBlock(true)
                 }
-
+                
             } catch {
                 completionQueue.async {
                     completionBlock(false)
@@ -93,9 +109,11 @@ extension KeychainManager: SecretStoreManagerProtocol {
         }
     }
 
-    public func checkSecret(for identifier: String,
-                            completionQueue: DispatchQueue,
-                            completionBlock: @escaping (Bool) -> Void) {
+    public func checkSecret(
+        for identifier: String,
+        completionQueue: DispatchQueue,
+        completionBlock: @escaping (Bool) -> Void
+    ) {
         concurentQueue.async {
             let result = self.checkSecret(for: identifier)
 
@@ -106,6 +124,6 @@ extension KeychainManager: SecretStoreManagerProtocol {
     }
 
     public func checkSecret(for identifier: String) -> Bool {
-        return (try? self.keystore.checkKey(for: identifier)) ?? false
+        (try? self.keystore.checkKey(for: identifier)) ?? false
     }
 }
