@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SoraKeystore'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'A library to wrap logic related to keychain and user defaults.'
 
   s.homepage         = 'https://github.com/soramitsu'
