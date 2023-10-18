@@ -236,12 +236,13 @@
 				TargetAttributes = {
 					029878D42181019A0085E605 = {
 						CreatedOnToolsVersion = 10.0;
-						DevelopmentTeam = ANAULAA354;
+						DevelopmentTeam = YLWWUD25VZ;
 						LastSwiftMigration = 1120;
 						ProvisioningStyle = Automatic;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = YLWWUD25VZ;
 						LastSwiftMigration = 0900;
 						TestTargetID = 029878D42181019A0085E605;
 					};
@@ -260,8 +261,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				607FACE41AFB9204008FA782 /* SoraKeystoreTests */,
 				029878D42181019A0085E605 /* SoraKeystoreExample */,
+				607FACE41AFB9204008FA782 /* SoraKeystoreTests */,
 			);
 		};
 /* End PBXProject section */
@@ -395,7 +396,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = ANAULAA354;
+				DEVELOPMENT_TEAM = YLWWUD25VZ;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = SoraKeystoreExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -424,7 +425,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ANAULAA354;
+				DEVELOPMENT_TEAM = YLWWUD25VZ;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = SoraKeystoreExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -548,13 +549,14 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = YLWWUD25VZ;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -573,6 +575,7 @@
 				DEVELOPMENT_TEAM = YLWWUD25VZ;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
