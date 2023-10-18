@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
 
   s.homepage         = 'https://github.com/soramitsu'
   s.license          = { :type => 'GPL 3.0', :file => 'LICENSE' }
-  s.author           = { 'ERussel' => 'emkil.russel@gmail.com' }
+  s.author           = { 'Soramitsu' => 'bot@soramitsu.co.jp' }
   s.source           = { :git => 'https://github.com/soramitsu/keystore-iOS.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '12.0'

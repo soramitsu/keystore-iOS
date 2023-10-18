@@ -22,7 +22,7 @@ pod 'SoraKeystore'
 
 ## Author
 
-ERussel, emkil.russel@gmail.com
+Soramitsu, bot@soramitsu.co.jp
 
 ## License
 
